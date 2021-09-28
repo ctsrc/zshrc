@@ -20,7 +20,7 @@ git clone git@github.com:ctsrc/zshrc.git
 #### macOS
 
 ```zsh
-ln -s src/zshrc/macOS.zshrc ~/.zshrc
+ln -s src/zshrc/macOS.zshrc  ~/.zshrc
 ln -s src/zshrc/macOS.zshenv ~/.zshenv
 ```
 
