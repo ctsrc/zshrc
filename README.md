@@ -36,5 +36,6 @@ ln -s src/zshrc/FreeBSD.zshenv ~/.zshenv
 ##### KDE Neon User Edition
 
 ```zsh
-ln -s src/zshrc/kde-neon.zshrc ~/.zshrc
+ln -s src/zshrc/kde-neon.zshrc  ~/.zshrc
+ln -s src/zshrc/kde-neon.zshenv ~/.zshenv
 ```
