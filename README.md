@@ -27,7 +27,8 @@ ln -s src/zshrc/macOS.zshenv ~/.zshenv
 #### FreeBSD
 
 ```zsh
-ln -s src/zshrc/FreeBSD.zshrc ~/.zshrc
+ln -s src/zshrc/FreeBSD.zshrc  ~/.zshrc
+ln -s src/zshrc/FreeBSD.zshenv ~/.zshenv
 ```
 
 #### Linux
