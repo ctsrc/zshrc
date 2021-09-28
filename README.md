@@ -23,16 +23,16 @@ git clone git@github.com:ctsrc/zshrc.git
 ln -s src/zshrc/macOS.zshrc ~/.zshrc
 ```
 
+#### FreeBSD
+
+```zsh
+ln -s src/zshrc/FreeBSD.zshrc ~/.zshrc
+```
+
 #### Linux
 
 ##### KDE Neon User Edition
 
 ```zsh
 ln -s src/zshrc/kde-neon.zshrc ~/.zshrc
-```
-
-#### FreeBSD
-
-```zsh
-ln -s src/zshrc/FreeBSD.zshrc ~/.zshrc
 ```
