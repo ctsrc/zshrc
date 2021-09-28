@@ -27,4 +27,4 @@ func ghu () {
 
 alias s="pkg search"
 alias u="doas freebsd-update fetch && doas freebsd-update install; doas pkg update && doas pkg upgrade"
-alias i="pkg install"
+alias i="doas pkg install"
