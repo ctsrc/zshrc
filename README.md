@@ -15,7 +15,7 @@ cd ~/src/
 git clone git@github.com:ctsrc/zshrc.git
 ```
 
-### Step 2: Per OS symlinks
+### Step 2: Symlinks
 
 #### macOS
 
