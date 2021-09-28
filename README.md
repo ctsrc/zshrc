@@ -18,7 +18,7 @@ git clone git@github.com:ctsrc/zshrc.git
 Symlink.
 
 ```zsh
-ln -s ~/.zshrc src/zshrc/macOS.zshrc
+ln -s src/zshrc/macOS.zshrc ~/.zshrc
 ```
 
 ### Linux 
@@ -37,7 +37,7 @@ git clone git@github.com:ctsrc/zshrc.git
 Symlink.
 
 ```zsh
-ln -s ~/.zshrc src/zshrc/kde-neon.zshrc
+ln -s src/zshrc/kde-neon.zshrc ~/.zshrc
 ```
 
 ### FreeBSD
@@ -55,5 +55,5 @@ git clone git@github.com:ctsrc/zshrc.git
 Symlink.
 
 ```zsh
-ln -s ~/.zshrc src/zshrc/FreeBSD.zshrc
+ln -s src/zshrc/FreeBSD.zshrc ~/.zshrc
 ```
