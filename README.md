@@ -2,6 +2,12 @@
 
 This is my `~/.zshrc` for various systems.
 
+## Prerequisities
+
+### macOS
+
+Install homebrew from https://brew.sh/
+
 ## Installation
 
 ### Step 1: Clone repo
