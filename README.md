@@ -2,11 +2,23 @@
 
 This is my `~/.zshrc` for various systems.
 
-## Prerequisities
+## Prerequisities for aliases
 
 ### macOS
 
-Install homebrew from https://brew.sh/
+* `s`, `i`, `u`: Install homebrew from https://brew.sh/
+   in order to use these aliases.
+
+* `vim`: Install the `neovim` package from homebrew
+   in order to use this alias.
+
+### FreeBSD
+
+* `vim`: Install the `neovim` package.
+
+### KDE Neon
+
+* `vim`: Install the `neovim` package.
 
 ## Installation
 
