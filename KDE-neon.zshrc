@@ -28,8 +28,8 @@ func ghu () {
 }
 
 alias s="apt search"
-alias u="sudo apt-get update && sudo pkcon update"
 alias i="sudo apt install"
+alias u="sudo apt-get update && sudo pkcon update"
 
 alias screen="systemd-run --scope --user screen"
 alias sr="screen -dUR"

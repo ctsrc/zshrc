@@ -40,8 +40,8 @@ func ghu () {
 }
 
 alias s="brew search"
-alias u="brew update && brew upgrade && brew cleanup --prune=0"
 alias i="brew install"
+alias u="brew update && brew upgrade && brew cleanup --prune=0"
 
 alias vim="nvim"
 
