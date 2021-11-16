@@ -14,11 +14,13 @@ This is my `~/.zshrc` for various systems.
 
 ### FreeBSD
 
-* `vim`: Install the `neovim` package.
+* `vim`: Install the `neovim` package
+   in order to use this alias.
 
 ### KDE Neon
 
-* `vim`: Install the `neovim` package.
+* `vim`: Install the `neovim` package
+   in order to use this alias.
 
 ## Installation
 
