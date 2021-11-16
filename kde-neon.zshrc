@@ -34,3 +34,5 @@ alias i="sudo apt install"
 alias screen="systemd-run --scope --user screen"
 alias sr="screen -dUR"
 alias sl="screen -list"
+
+alias vim="nvim"
