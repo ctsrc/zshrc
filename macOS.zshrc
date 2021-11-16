@@ -43,4 +43,6 @@ alias s="brew search"
 alias u="brew update && brew upgrade && brew cleanup --prune=0"
 alias i="brew install"
 
+alias vim="nvim"
+
 export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:$PATH"
