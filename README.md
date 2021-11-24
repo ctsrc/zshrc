@@ -17,7 +17,7 @@ This is my `~/.zshrc` for various systems.
 * `vim`: Install the `neovim` package
    in order to use this alias.
 
-### KDE Neon
+### KDE Neon, Ubuntu, Debian, etc
 
 * `vim`: Install the `neovim` package
    in order to use this alias.
@@ -53,9 +53,9 @@ ln -s src/zshrc/FreeBSD.zshenv ~/.zshenv
 
 #### Linux
 
-##### KDE Neon User Edition
+##### KDE Neon, Ubuntu, Debian, etc
 
 ```zsh
-ln -s src/zshrc/kde-neon.zshrc  ~/.zshrc
-ln -s src/zshrc/kde-neon.zshenv ~/.zshenv
+ln -s src/zshrc/debian-family.zshrc  ~/.zshrc
+ln -s src/zshrc/debian-family.zshenv ~/.zshenv
 ```
