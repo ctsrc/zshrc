@@ -49,4 +49,4 @@ alias sl="screen -list"
 
 alias vim="nvim"
 
-export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
