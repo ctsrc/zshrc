@@ -1,6 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTSIZE=10000
 SAVEHIST=10000
+setopt HIST_IGNORE_SPACE
 setopt beep nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
