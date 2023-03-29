@@ -40,6 +40,11 @@ func ghu () {
   cd "$ghudir"
 }
 
-export PS1="%n@%m 🌟 %~ %# "
+hname="$(hostname -f)"
+if [ "$hname" = "nova.local" ] ; then
+  export PS1="%n@%m 🌟 %~ %# "
+else
+  export PS1="%n@%m (?) %~ %# "
+fi
 
 export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
