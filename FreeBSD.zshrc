@@ -13,8 +13,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PROMPT='%n@%m:%~ %# '
-
 func gh () {
   url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
   git clone "$url"
@@ -36,3 +34,5 @@ alias sr="screen -dUR"
 alias sl="screen -list"
 
 alias vim="nvim"
+
+export PS1="%n@%m ⛩️  %~ %# "
