@@ -35,4 +35,11 @@ alias sl="screen -list"
 
 alias vim="nvim"
 
-export PS1="%n@%m ⛩️  %~ %# "
+hname="$(hostname -f)"
+if [ "$hname" = "login.nstr.no" ] ; then
+  export PS1="%n@%m ⛩️  %~ %# "
+elif [ "$hname" = "quetzal.infra.nstr.no" ] ; then
+  export PS1="%n@%m 🐦 %~ %# "
+else
+  export PS1="%n@%m (?) %~ %# "
+fi

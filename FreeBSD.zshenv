@@ -1,2 +1,2 @@
+. "$HOME/.cargo/env"
 export EDITOR=vim
-source "$HOME/.cargo/env"
