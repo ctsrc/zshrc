@@ -1,2 +1,2 @@
-. "$HOME/.cargo/env"
+test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 export EDITOR=vim
