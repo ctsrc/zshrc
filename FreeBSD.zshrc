@@ -41,6 +41,8 @@ if [ "$hname" = "login.nstr.no" ] ; then
   export PS1="%n@%m ⛩️  %~ %# "
 elif [ "$hname" = "quetzal.infra.nstr.no" ] ; then
   export PS1="%n@%m 🐦 %~ %# "
+elif [ "$hname" = "boyne" ] ; then
+  export PS1="%n@%m ⛰️  %~ %# "
 else
   export PS1="%n@%m (?) %~ %# "
 fi
