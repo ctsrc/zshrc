@@ -13,6 +13,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+func yt () {
+  mkdir -p ~/youtube/
+  cd ~/youtube/
+  yt-dlp "$1"
+}
+
 func ghu () {
   # TODO: More robust
   user="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/.*#\1#' )"
