@@ -44,14 +44,16 @@ alias sl="screen -list"
 alias vim="nvim"
 
 hname="$(hostname -f)"
-if [ "$hname" = "cascade-delight" ] ; then
-  export PS1="%n@%m 💦 %~ %# "
-elif [ "$hname" = "minitower" ] ; then
-  export PS1="%n@%m 🗼 %~ %# "
-elif [ "$hname" = "displaydude" ] ; then
+if [ "$hname" = "displaydude" ] ; then
   export PS1="%n@%m 🖥  %~ %# "
 elif [ "$hname" = "rough" ] ; then
   export PS1="%n@%m 🥺 %~ %# "
+elif [ "$hname" = "hoover" ] ; then
+  export PS1="%n@%m 🧹 %~ %# "
+elif [ "$hname" = "cascade-delight" ] ; then
+  export PS1="%n@%m 💦 %~ %# "
+elif [ "$hname" = "minitower" ] ; then
+  export PS1="%n@%m 🗼 %~ %# "
 else
   export PS1="%n@%m (?) %~ %# "
 fi
