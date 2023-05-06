@@ -35,7 +35,7 @@ func gh () {
 
 alias s="apt search"
 alias i="sudo apt install"
-alias u="sudo apt-get update && sudo pkcon update"
+alias u="sudo apt-get update && sudo pkcon update || sudo apt-get upgrade"
 
 alias screen="systemd-run --scope --user screen"
 alias sr="screen -dUR"
