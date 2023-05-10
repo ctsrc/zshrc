@@ -43,9 +43,9 @@ func gh () {
 
 hname="$(hostname -f)"
 if [ "$hname" = "nova.local" ] ; then
-  export PS1="%n@%m 🌟 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🌟 %~ "$'\n'"%# "
 else
-  export PS1="%n@%m (?) %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"

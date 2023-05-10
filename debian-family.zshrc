@@ -45,17 +45,17 @@ alias vim="nvim"
 
 hname="$(hostname -f)"
 if [ "$hname" = "displaydude" ] ; then
-  export PS1="%n@%m 🖥  %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🖥  %~ "$'\n'"%# "
 elif [ "$hname" = "rough" ] ; then
-  export PS1="%n@%m 🥺 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🥺 %~ "$'\n'"%# "
 elif [ "$hname" = "hoover" ] ; then
-  export PS1="%n@%m 🧹 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🧹 %~ "$'\n'"%# "
 elif [ "$hname" = "cascade-delight" ] ; then
-  export PS1="%n@%m 💦 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 💦 %~ "$'\n'"%# "
 elif [ "$hname" = "minitower" ] ; then
-  export PS1="%n@%m 🗼 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🗼 %~ "$'\n'"%# "
 else
-  export PS1="%n@%m (?) %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
 
 # Begin atuin section

@@ -38,17 +38,17 @@ alias vim="nvim"
 
 hname="$(hostname -f)"
 if [ "$hname" = "login.nstr.no" ] ; then
-  export PS1="%n@%m ⛩️  %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m ⛩️  %~ "$'\n'"%# "
 elif [ "$hname" = "fi1" ] ; then
-  export PS1="%n@%m 🇫🇮  %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🇫🇮  %~ "$'\n'"%# "
 elif [ "$hname" = "de1" ] ; then
-  export PS1="%n@%m 🇩🇪  %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🇩🇪  %~ "$'\n'"%# "
 elif [ "$hname" = "quetzal.infra.nstr.no" ] ; then
-  export PS1="%n@%m 🐦 %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m 🐦 %~ "$'\n'"%# "
 elif [ "$hname" = "boyne" ] ; then
-  export PS1="%n@%m ⛰️  %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m ⛰️  %~ "$'\n'"%# "
 else
-  export PS1="%n@%m (?) %~ "$'\n'"%# "
+  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
 
 # Begin atuin section
