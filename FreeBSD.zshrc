@@ -37,7 +37,7 @@ alias sl="screen -list"
 alias vim="nvim"
 
 hname="$(hostname -f)"
-if [ "$hname" = "de1" ] ; then
+if [ "$hname" = "lynyrd" ] ; then
   export PS1=$'\n'"%n@%m ⚡ %~ "$'\n'"%# "
 elif [ "$hname" = "de1" ] ; then
   export PS1=$'\n'"%n@%m 🇩🇪  %~ "$'\n'"%# "
