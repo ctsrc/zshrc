@@ -33,6 +33,21 @@ func gh () {
   git clone "$url"
 }
 
+func htu () {
+  # TODO: More robust
+  user="$( echo "$1" | sed 's#^https://\(git\.\)\?sr.ht/~\([^/]*\)/.*#\2#' )"
+  htudir="$HOME/src/sr.ht/$user"
+  [[ -d "$htudir" ]] || mkdir -p "$htudir"
+  cd "$htudir"
+}
+
+func ht () {
+  htu "$1"
+  #url="$( echo "$1" | sed 's#^https://\(git\.\)\?sr.ht/~\(.*\)#git@git.sr.ht:~\2#' )"
+  url="$( echo "$1" | sed 's#^https://\(git\.\)\?sr.ht/~\([^/]*\)/\([^/]*\).*#https://git.sr.ht/~\2/\3#' )"
+  git clone "$url"
+}
+
 alias s="apt search"
 alias i="sudo apt install"
 alias u="sudo apt-get update && sudo pkcon update || sudo apt-get upgrade"
