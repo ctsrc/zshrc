@@ -24,7 +24,7 @@ func ghu () {
 func gh () {
   ghu "$1"
   url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
-  git clone "$url"
+  git clone --bare "$url"
 }
 
 alias s="pkg search"
