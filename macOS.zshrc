@@ -44,6 +44,8 @@ func gh () {
 hname="$(hostname -f)"
 if [ "$hname" = "nova.local" ] ; then
   export PS1=$'\n'"%n@%m 🌟 %~ "$'\n'"%# "
+elif [ "$hname" = "milkyway" ] ; then
+  export PS1=$'\n'"%n@%m 🌌 %~ "$'\n'"%# "
 else
   export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
