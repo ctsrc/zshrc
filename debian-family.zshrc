@@ -16,7 +16,7 @@ compinit
 func yt () {
   mkdir -p ~/youtube/
   cd ~/youtube/
-  yt-dlp "$1"
+  yt-dlp --add-metadata "$1"
 }
 
 func ghu () {
