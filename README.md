@@ -42,6 +42,8 @@ git clone git@github.com:ctsrc/zshrc.git
 ```zsh
 ln -s src/zshrc/macOS.zshrc  ~/.zshrc
 ln -s src/zshrc/macOS.zshenv ~/.zshenv
+ln -s src/zshrc/macOS.curlrc ~/.curlrc
+ln -s src/zshrc/macOS.cargo/config ~/.cargo/config
 ```
 
 #### FreeBSD

@@ -1,0 +1,3 @@
+[http]
+cainfo = "/Users/erikn/myCA_cert.pem"
+
