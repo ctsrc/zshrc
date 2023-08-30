@@ -1,0 +1,9 @@
+[pull]
+	ff = only
+[user]
+	name = Erik Nordstrøm
+	email = erik@nordstroem.no
+[init]
+	defaultBranch = main
+[http]
+	sslCAInfo = /Users/erikn/myCA_cert.pem
