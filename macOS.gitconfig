@@ -6,4 +6,4 @@
 [init]
 	defaultBranch = main
 [http]
-	sslCAInfo = /Users/erikn/myCA_cert.pem
+	sslCAInfo = /Users/erikn/myCA6.pem
