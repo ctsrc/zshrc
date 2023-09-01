@@ -1,3 +1,3 @@
 [http]
-cainfo = "/Users/erikn/myCA_cert.pem"
+cainfo = "/Users/erikn/myCA6.pem"
 
