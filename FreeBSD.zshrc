@@ -37,12 +37,14 @@ alias sl="screen -list"
 alias vim="nvim"
 
 hname="$(hostname -f)"
-if [ "$hname" = "lynyrd" ] ; then
-  export PS1=$'\n'"%n@%m ⚡ %~ "$'\n'"%# "
+if [ "$hname" = "blacksmith" ] ; then
+  export PS1=$'\n'"%n@%m ⚒️  %~ "$'\n'"%# "
 elif [ "$hname" = "de1" ] ; then
   export PS1=$'\n'"%n@%m 🇩🇪  %~ "$'\n'"%# "
 elif [ "$hname" = "fi1" ] ; then
   export PS1=$'\n'"%n@%m 🇫🇮  %~ "$'\n'"%# "
+elif [ "$hname" = "lynyrd" ] ; then
+  export PS1=$'\n'"%n@%m ⚡ %~ "$'\n'"%# "
 elif [ "$hname" = "login.nstr.no" ] ; then
   export PS1=$'\n'"%n@%m ⛩️  %~ "$'\n'"%# "
 elif [ "$hname" = "quetzal.infra.nstr.no" ] ; then
