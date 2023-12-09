@@ -13,6 +13,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+func yt () {
+  mkdir -p ~/youtube/
+  cd ~/youtube/
+  ts yt-dlp --add-metadata "$1"
+}
+
 func ghu () {
   # TODO: More robust
   user="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/.*#\1#' )"
@@ -24,7 +30,7 @@ func ghu () {
 func gh () {
   ghu "$1"
   url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
-  git clone --bare "$url"
+  ts git clone --bare "$url"
 }
 
 alias s="pkg search"
@@ -35,6 +41,8 @@ alias sr="screen -dUR"
 alias sl="screen -list"
 
 alias vim="nvim"
+
+alias tsp="ts"
 
 hname="$(hostname -f)"
 if [ "$hname" = "blacksmith" ] ; then
