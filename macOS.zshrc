@@ -52,9 +52,9 @@ fi
 
 export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
 
-export ALL_PROXY=http://10.69.69.1:3128
-export CURL_CA_BUNDLE=/opt/homebrew/etc/ca-certificates/cert.pem
-export HOMEBREW_CURLRC=1
+#export ALL_PROXY=http://10.69.69.1:3128
+#export CURL_CA_BUNDLE=/opt/homebrew/etc/ca-certificates/cert.pem
+#export HOMEBREW_CURLRC=1
 
 # Begin atuin section
 #
