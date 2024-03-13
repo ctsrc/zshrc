@@ -13,6 +13,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+func yts () {
+  cd ~/yt-shorts/
+  ts yt-dlp --add-metadata "$1"
+}
+
 func yt () {
   mkdir -p ~/youtube/
   cd ~/youtube/
