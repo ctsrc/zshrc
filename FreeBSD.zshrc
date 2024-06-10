@@ -34,7 +34,9 @@ func ghu () {
 
 func gh () {
   ghu "$1"
-  url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
+  #url="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/\([^/]*\).*#git@github.com:\1/\2.git#' )"
+  url="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/\([^/]*\).*#https://github.com/\1/\2.git#' )"
+  echo "$url"
   ts git clone --bare "$url"
 }
 
