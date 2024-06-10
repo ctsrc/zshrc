@@ -37,7 +37,7 @@ func ghu () {
 
 func gh () {
   ghu "$1"
-  url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
+  url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#https://github.com/\1.git#' )"
   git clone "$url"
 }
 
@@ -52,7 +52,8 @@ fi
 
 export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
 
-export ALL_PROXY=http://10.69.69.1:3128
+#export ALL_PROXY=http://10.69.69.1:3128
+#export ALL_PROXY=http://192.168.1.15:3128
 export CURL_CA_BUNDLE=/opt/homebrew/etc/ca-certificates/cert.pem
 export HOMEBREW_CURLRC=1
 
@@ -112,3 +113,7 @@ bindkey '^[[A' _atuin_up_search_widget
 bindkey '^[OA' _atuin_up_search_widget
 #
 # End atuin section
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"

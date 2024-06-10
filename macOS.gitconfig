@@ -6,4 +6,22 @@
 [init]
 	defaultBranch = main
 [http]
-	sslCAInfo = /Users/erikn/myCA6.pem
+	#sslCAInfo = /Users/erikn/myCA6.pem
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[merge]
+	conflictStyle = zdiff3
+[diff]
+	tool = difftastic
+	algorithm = histogram
+#[core]
+#	pager = delta
+[interactive]
+	diffFilter = delta
+[rerere]
+	enabled = true
