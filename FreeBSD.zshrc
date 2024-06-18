@@ -15,13 +15,13 @@ compinit
 
 func yts () {
   cd ~/yt-shorts/
-  ts yt-dlp --write-subs --write-auto-subs --sub-langs all --add-metadata "$1"
+  ts yt-dlp --write-subs --sub-langs all --add-metadata "$1"
 }
 
 func yt () {
   mkdir -p ~/youtube/
   cd ~/youtube/
-  ts yt-dlp --write-subs --write-auto-subs --sub-langs all --add-metadata "$1"
+  ts yt-dlp --write-subs --sub-langs all --add-metadata "$1"
 }
 
 func ghu () {
