@@ -19,8 +19,8 @@ func yts () {
 }
 
 func yt () {
-  mkdir -p ~/youtube/
-  cd ~/youtube/
+  mkdir -p ~/youtube2/
+  cd ~/youtube2/
   tsp yt-dlp --add-metadata "$1"
 }
 
