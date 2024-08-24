@@ -35,7 +35,7 @@ func ghu () {
 func gh () {
   ghu "$1"
   url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
-  tsp git clone --bare "$url"
+  tsp /usr/bin/env GIT_TERMINAL_PROMPT=0 git clone --bare "$url"
 }
 
 func htu () {

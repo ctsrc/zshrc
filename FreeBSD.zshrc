@@ -37,7 +37,7 @@ func gh () {
   #url="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/\([^/]*\).*#git@github.com:\1/\2.git#' )"
   url="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/\([^/]*\).*#https://github.com/\1/\2.git#' )"
   echo "$url"
-  ts git clone --bare "$url"
+  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 git clone --bare "$url"
 }
 
 alias s="pkg search"
