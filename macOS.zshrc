@@ -28,17 +28,11 @@ compinit
 ## <<< conda initialize <<<
 
 func ghu () {
-  # TODO: More robust
-  user="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/.*#\1#' )"
-  ghudir="$HOME/src/github.com/$user"
-  [[ -d "$ghudir" ]] || mkdir -p "$ghudir"
-  cd "$ghudir"
+  echo "Wrong machine, mate." 1>&2
 }
 
 func gh () {
-  ghu "$1"
-  url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#https://github.com/\1.git#' )"
-  git clone "$url"
+  echo "Wrong machine, mate." 1>&2
 }
 
 hname="$(hostname -f)"

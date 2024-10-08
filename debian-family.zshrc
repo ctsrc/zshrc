@@ -25,17 +25,11 @@ func yt () {
 }
 
 func ghu () {
-  # TODO: More robust
-  user="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/.*#\1#' )"
-  ghudir="$HOME/src/github.com/$user"
-  [[ -d "$ghudir" ]] || mkdir -p "$ghudir"
-  cd "$ghudir"
+  echo "Wrong machine, mate." 1>&2
 }
 
 func gh () {
-  ghu "$1"
-  url="$( echo "$1" | sed 's#^https://github.com/\(.*\)#git@github.com:\1.git#' )"
-  tsp /usr/bin/env GIT_TERMINAL_PROMPT=0 git clone --bare "$url"
+  echo "Wrong machine, mate." 1>&2
 }
 
 func htu () {
