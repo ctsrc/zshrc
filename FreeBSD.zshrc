@@ -25,8 +25,15 @@ func yt () {
 }
 
 func ghu () {
-  # TODO: More robust
-  user="$( echo "$1" | sed 's#^https://github.com/\([^/]*\)/.*#\1#' )"
+  if ! echo "$1" | egrep -q "^https://github.com" ; then
+    echo "Not a GitHub URL." 1>&2
+    return 1
+  fi
+  if ! echo "$1" | egrep -q "^https://github.com/[^/]+/.+" ; then
+    echo "Not a GitHub repository URL." 1>&2
+    return 1
+  fi
+  user="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#\1#' )"
   ghudir="$HOME/src/github.com/$user"
   [[ -d "$ghudir" ]] || mkdir -p "$ghudir"
   cd "$ghudir"
