@@ -33,6 +33,14 @@ func ghu () {
 }
 
 func gh () {
+  if ! echo "$1" | egrep -q "^https://github.com" ; then
+    echo "Not a GitHub URL." 1>&2
+    return 1
+  fi
+  if ! echo "$1" | egrep -q "^https://github.com/[^/]+/.+" ; then
+    echo "Not a GitHub repository URL." 1>&2
+    return 1
+  fi
   ghu "$1"
   #url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#git@github.com:\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
   url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#https://github.com/\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
