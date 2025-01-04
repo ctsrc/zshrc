@@ -33,9 +33,9 @@ func ghu () {
     echo "Not a GitHub repository URL." 1>&2
     return 1
   fi
-  user="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#\1#' )"
-  ghudir="$HOME/src/github.com/$user"
-  [[ -d "$ghudir" ]] || mkdir -p "$ghudir"
+  ghuser="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#\1#' )"
+  ghudir="${HOME}/src/github.com/${ghuser}"
+  [[ -d "${ghudir}" ]] || mkdir -p "${ghudir}"
   cd "$ghudir"
 }
 
@@ -48,11 +48,22 @@ func gh () {
     echo "Not a GitHub repository URL." 1>&2
     return 1
   fi
+  if [[ "$( hostname )" != "de1" ]] ; then
+    echo "Wrong host?" 1>&2
+    return 1
+  fi
   ghu "$1"
   #url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#git@github.com:\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
   url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#https://github.com/\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
-  echo "$url"
-  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 git clone --bare "$url"
+  ghuser="$( echo "${url}" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\)$#\1#' )"
+  ghrepo="$( echo "${url}" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\)$#\2#' )"
+  echo "${url}"
+  echo "${ghuser}"
+  echo "${ghrepo}"
+  wdir="$( mktemp -d -p /src/tmp/ )"
+  cd "${wdir}"
+  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
+  cd "${HOME}/src/github.com/${ghuser}/"
 }
 
 alias s="pkg search"
