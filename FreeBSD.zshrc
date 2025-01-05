@@ -34,7 +34,7 @@ func ghu () {
     return 1
   fi
   ghuser="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#\1#' )"
-  ghudir="${HOME}/src/github.com/${ghuser}"
+  ghudir="${HOME}/src/github.com/repos/${ghuser}"
   [[ -d "${ghudir}" ]] || mkdir -p "${ghudir}"
   cd "$ghudir"
 }
@@ -60,10 +60,10 @@ func gh () {
   echo "${url}"
   echo "${ghuser}"
   echo "${ghrepo}"
-  wdir="$( mktemp -d -p /src/tmp/ )"
+  wdir="$( mktemp -d -p /src/github.com/tmp/ )"
   cd "${wdir}"
-  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
-  cd "${HOME}/src/github.com/${ghuser}/"
+  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
+  cd "${HOME}/src/github.com/repos/${ghuser}/"
 }
 
 alias s="pkg search"
