@@ -27,6 +27,33 @@ compinit
 #unset __conda_setup
 ## <<< conda initialize <<<
 
+#
+# PATH
+#
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+# OpenJDK from Homebrew
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# Curl from Homebrew
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+# Python
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+# Golang
+export PATH="$HOME/go/bin:$PATH"
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+# Pyenv
+if /usr/bin/which -s pyenv ; then
+  export PATH="$(pyenv root)/shims:$PATH"
+fi
+# Host- and/or user-specific programs and scripts
+export PATH="$HOME/bin:$PATH"
+
+#
+# End of PATH
+#
+
 func ghu () {
   echo "Wrong machine, mate." 1>&2
 }
@@ -43,8 +70,6 @@ elif [ "$hname" = "milkyway" ] ; then
 else
   export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
-
-export PATH="$HOME/.cargo/bin:$HOME/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
 
 #export ALL_PROXY=http://10.69.69.1:3128
 #export ALL_PROXY=http://192.168.1.15:3128
@@ -107,9 +132,3 @@ bindkey '^[[A' _atuin_up_search_widget
 bindkey '^[OA' _atuin_up_search_widget
 #
 # End atuin section
-
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
-export PATH="$HOME/Library/Python/3.12/bin:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
