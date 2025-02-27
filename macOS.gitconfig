@@ -1,27 +1,51 @@
-[pull]
-	ff = only
 [user]
 	name = Erik Nordstrøm
 	email = erik@nordstroem.no
-[init]
-	defaultBranch = main
+[help]
+	autocorrect = prompt
 [http]
 	#sslCAInfo = /Users/erikn/myCA6.pem
 [credential]
-	helper = osxkeychain
+	#helper = osxkeychain
+[commit]
+	verbose = true
+[init]
+	defaultBranch = main
 [filter "lfs"]
+	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[pull]
+	ff = only
 [merge]
 	conflictStyle = zdiff3
 [diff]
-	tool = difftastic
 	algorithm = histogram
-#[core]
-#	pager = delta
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+	#tool = difftastic
+[core]
+	#pager = delta
 [interactive]
-	diffFilter = delta
+	#diffFilter = delta
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [rerere]
-	enabled = true
+	#enabled = true
+	#autoupdate = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
