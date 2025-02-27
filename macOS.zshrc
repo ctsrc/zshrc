@@ -111,3 +111,5 @@ bindkey '^[OA' _atuin_up_search_widget
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
