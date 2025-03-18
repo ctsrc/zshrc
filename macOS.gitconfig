@@ -1,6 +1,6 @@
 [user]
-	name = Erik Nordstrøm
-	email = erik@nordstroem.no
+	#name = Erik Nordstrøm
+	#email = erik@nordstroem.no
 [help]
 	autocorrect = prompt
 [http]

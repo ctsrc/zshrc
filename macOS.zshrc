@@ -62,14 +62,22 @@ func gh () {
   echo "Wrong machine, mate." 1>&2
 }
 
-hname="$(hostname -f)"
-if [ "$hname" = "nova.local" ] ; then
+hname="$( hostname -s )"
+if [ "$hname" = "nova" ] ; then
   export PS1=$'\n'"%n@%m 🌟 %~ "$'\n'"%# "
 elif [ "$hname" = "milkyway" ] ; then
   export PS1=$'\n'"%n@%m 🌌 %~ "$'\n'"%# "
 else
   export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
+
+# We use a host-specific committer name,
+# paired with our author name.
+# TODO: Check if session is remote and adapt comitter name accordingly.
+export GIT_COMMITTER_NAME="Locally committed from host ${hname}"
+export GIT_COMMITTER_EMAIL="${USER}@${hname}"
+export GIT_AUTHOR_NAME="Erik Nordstrøm"
+export GIT_AUTHOR_EMAIL="erik@nordstroem.no"
 
 #export ALL_PROXY=http://10.69.69.1:3128
 #export ALL_PROXY=http://192.168.1.15:3128
