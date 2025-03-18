@@ -14,7 +14,8 @@ compinit
 # End of lines added by compinstall
 
 func yts () {
-  mkdir -p ~/yt-shorts/
+  mkdir -p ~/yt-shorts2/
+  cd ~/yt-shorts2/
   tsp yt-dlp --add-metadata "$1"
 }
 
