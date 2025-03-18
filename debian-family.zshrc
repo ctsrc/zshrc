@@ -57,7 +57,7 @@ alias sl="screen -list"
 
 alias vim="nvim"
 
-hname="$(hostname -f)"
+hname="$(hostname -s)"
 if [ "$hname" = "displaydude" ] ; then
   export PS1=$'\n'"%n@%m 🖥  %~ "$'\n'"%# "
 elif [ "$hname" = "blixen" ] ; then
@@ -73,6 +73,20 @@ elif [ "$hname" = "minitower" ] ; then
 else
   export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
 fi
+
+# We use a host-specific committer name,
+# paired with our author name.
+if (( ${+SSH_CLIENT} )); then
+  # Looking at $SSH_CLIENT is not perfect. There are some cases
+  # where spawning a new shell will not have $SSH_CLIENT set in
+  # the spawned shell. But for most cases it's good enough for now.
+  export GIT_COMMITTER_NAME="Committed from host ${hname} via remote ssh session"
+else
+  export GIT_COMMITTER_NAME="Locally committed from host ${hname}"
+fi
+export GIT_COMMITTER_EMAIL="${USER}@${hname}"
+export GIT_AUTHOR_NAME="Erik Nordstrøm"
+export GIT_AUTHOR_EMAIL="erik@nordstroem.no"
 
 # Begin atuin section
 #

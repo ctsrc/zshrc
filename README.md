@@ -44,6 +44,7 @@ ln -s src/zshrc/macOS.zshrc  ~/.zshrc
 ln -s src/zshrc/macOS.zshenv ~/.zshenv
 ln -s src/zshrc/macOS.curlrc ~/.curlrc
 ln -s src/zshrc/macOS.gitconfig ~/.gitconfig
+mkdir -p ~/.cargo/
 ln -s src/zshrc/macOS.cargo/config ~/.cargo/config
 ```
 
@@ -61,4 +62,5 @@ ln -s src/zshrc/FreeBSD.zshenv ~/.zshenv
 ```zsh
 ln -s src/zshrc/debian-family.zshrc  ~/.zshrc
 ln -s src/zshrc/debian-family.zshenv ~/.zshenv
+ln -s src/zshrc/debian-family.gitconfig ~/.gitconfig
 ```
