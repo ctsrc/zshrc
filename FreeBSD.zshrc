@@ -39,6 +39,49 @@ func ghu () {
   cd "$ghudir"
 }
 
+func ghn () {
+  ghuser="$1"
+  ghrepo="$2"
+  echo "Cloning new repo, not previously seen" 1>&2
+  if [[ -z "${ghuser}" ]] ; then
+    echo "Error: GitHub username argument not provided" 1>&2
+    return 1
+  fi
+  if [[ -z "${ghrepo}" ]] ; then
+    echo "Error: GitHub repo name argument not provided" 1>&2
+    return 1
+  fi
+  if ! [[ "${ghrepo}" == *.git ]] ; then
+    echo "Error: GitHub repo name must include '.git' suffix" 1>&2
+    return 1
+  fi
+  url="https://github.com/${ghuser}/${ghrepo}"
+  wdir="$( mktemp -d -p /src/github.com/tmp/ )"
+  cd "${wdir}"
+  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
+  cd "${HOME}/src/github.com/repos/${ghuser}/"
+}
+
+func ghx () {
+  ghuser="$1"
+  ghrepo="$2"
+  echo "Fetching changes for already cloned repo" 1>&2
+  if [[ -z "${ghuser}" ]] ; then
+    echo "Error: GitHub username argument not provided" 1>&2
+    return 1
+  fi
+  if [[ -z "${ghrepo}" ]] ; then
+    echo "Error: GitHub repo name argument not provided" 1>&2
+    return 1
+  fi
+  if ! [[ "${ghrepo}" == *.git ]] ; then
+    echo "Error: GitHub repo name must include '.git' suffix" 1>&2
+    return 1
+  fi
+  cd "${HOME}/src/github.com/repos/${ghuser}/${ghrepo}/" || return 1
+  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git fetch origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*' --prune"
+}
+
 func gh () {
   if ! echo "$1" | egrep -q "^https://github.com" ; then
     echo "Not a GitHub URL." 1>&2
@@ -53,17 +96,13 @@ func gh () {
     return 1
   fi
   ghu "$1"
-  #url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#git@github.com:\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
   url="$( echo "$1" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\).*#https://github.com/\1/\2#' -e 's#\.git$##' -e 's#$#.git#' )"
   ghuser="$( echo "${url}" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\)$#\1#' )"
   ghrepo="$( echo "${url}" | sed -e 's#^https://github.com/\([^/]*\)/\([^/?#]*\)$#\2#' )"
   echo "${url}"
   echo "${ghuser}"
   echo "${ghrepo}"
-  wdir="$( mktemp -d -p /src/github.com/tmp/ )"
-  cd "${wdir}"
-  ts /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
-  cd "${HOME}/src/github.com/repos/${ghuser}/"
+  test -d "${ghrepo}" && ghx "${ghuser}" "${ghrepo}" || ghn "${ghuser}" "${ghrepo}"
 }
 
 alias s="pkg search"
