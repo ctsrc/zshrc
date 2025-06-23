@@ -42,7 +42,7 @@ func ghu () {
 func ghn () {
   ghuser="$1"
   ghrepo="$2"
-  echo "Cloning new repo, not previously seen" 1>&2
+  echo "Cloning new repo, not previously seen 🌱" 1>&2
   if [[ -z "${ghuser}" ]] ; then
     echo "Error: GitHub username argument not provided" 1>&2
     return 1
@@ -65,7 +65,7 @@ func ghn () {
 func ghx () {
   ghuser="$1"
   ghrepo="$2"
-  echo "Fetching changes for already cloned repo" 1>&2
+  echo "Fetching changes for already cloned repo 🚰" 1>&2
   if [[ -z "${ghuser}" ]] ; then
     echo "Error: GitHub username argument not provided" 1>&2
     return 1
