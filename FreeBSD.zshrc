@@ -15,13 +15,13 @@ compinit
 
 func yts () {
   cd ~/yt-shorts/
-  /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
+  TS_MAXFINISHED=10000 /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
 }
 
 func yt () {
   mkdir -p ~/youtube/
   cd ~/youtube/
-  /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
+  TS_MAXFINISHED=10000 /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
 }
 
 func ghu () {
@@ -61,7 +61,7 @@ func ghn () {
   url="https://github.com/${ghuser}/${ghrepo}"
   wdir="$( mktemp -d -p /src/github.com/tmp/ )"
   cd "${wdir}"
-  /usr/local/bin/ts -L "${ghuser}/${ghrepo}" /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
+  TS_MAXFINISHED=10000 /usr/local/bin/ts -L "${ghuser}/${ghrepo}" /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git clone --bare '$url' && rm -rf '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && mv '${ghrepo}' '${HOME}/src/github.com/repos/${ghuser}/${ghrepo}' && cd && rmdir '${wdir}'"
   cd "${HOME}/src/github.com/repos/${ghuser}/"
 }
 
@@ -82,7 +82,7 @@ func ghx () {
     return 1
   fi
   cd "${HOME}/src/github.com/repos/${ghuser}/${ghrepo}/" || return 1
-  /usr/local/bin/ts -L "${ghuser}/${ghrepo}" /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git fetch origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*' --prune"
+  TS_MAXFINISHED=10000 /usr/local/bin/ts -L "${ghuser}/${ghrepo}" /usr/bin/env GIT_TERMINAL_PROMPT=0 zsh -c "git fetch origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*' --prune"
 }
 
 func gh () {
