@@ -25,6 +25,9 @@ func yt () {
 }
 
 func ghu () {
+  # Always go to gh repos dir, regardless of whether args are valid.
+  cd "${HOME}/src/github.com/repos/"
+
   if ! echo "$1" | egrep -q "^https://github.com" ; then
     echo "Not a GitHub URL." 1>&2
     return 1
@@ -83,6 +86,9 @@ func ghx () {
 }
 
 func gh () {
+  # Always go to gh repos dir, regardless of whether args are valid.
+  cd "${HOME}/src/github.com/repos/"
+
   if ! echo "$1" | egrep -q "^https://github.com" ; then
     echo "Not a GitHub URL." 1>&2
     return 1
