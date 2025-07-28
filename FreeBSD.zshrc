@@ -122,6 +122,8 @@ alias vim="nvim"
 
 alias tsp="ts"
 
+alias t="tmux a || tmux"
+
 hname="$(hostname -f)"
 if [ "$hname" = "blacksmith" ] ; then
   export PS1=$'\n'"%n@%m ⚒️  %~ "$'\n'"%# "
