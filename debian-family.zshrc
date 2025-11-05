@@ -14,15 +14,15 @@ compinit
 # End of lines added by compinstall
 
 func yts () {
-  mkdir -p ~/yt-shorts2/
-  cd ~/yt-shorts2/
-  tsp yt-dlp --add-metadata "$1"
+  mkdir -p ~/yt-shorts3/
+  cd ~/yt-shorts3/
+  tsp "$HOME/.pyenv/shims/yt-dlp" --add-metadata "$1"
 }
 
 func yt () {
-  mkdir -p ~/youtube5/
-  cd ~/youtube5/
-  tsp yt-dlp --add-metadata "$1"
+  mkdir -p ~/youtube6/
+  cd ~/youtube6/
+  tsp "$HOME/.pyenv/shims/yt-dlp" --add-metadata "$1"
 }
 
 func ghu () {
@@ -144,3 +144,9 @@ bindkey '^[[A' _atuin_up_search_widget
 bindkey '^[OA' _atuin_up_search_widget
 #
 # End atuin section
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+eval "$(pyenv virtualenv-init -)"
+. "/home/erikn/.deno/env"
