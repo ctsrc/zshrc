@@ -40,7 +40,7 @@ func yts () {
 func yt () {
   mkdir -p ~/youtube8/
   cd ~/youtube8/
-  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata --write-sub --write-auto-sub --sub-lang 'en.*' "$1"
+  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata --write-sub --write-auto-sub --sub-lang 'en.*' --extractor-args "youtube:skip=translated_subs" "$1"
 }
 
 func ghu () {
