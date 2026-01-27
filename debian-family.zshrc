@@ -38,9 +38,9 @@ func yts () {
 }
 
 func yt () {
-  mkdir -p ~/youtube7/
-  cd ~/youtube7/
-  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata "$1"
+  mkdir -p ~/youtube8/
+  cd ~/youtube8/
+  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata --write-sub --write-auto-sub --sub-lang 'en.*' "$1"
 }
 
 func ghu () {
