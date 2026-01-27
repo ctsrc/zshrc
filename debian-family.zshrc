@@ -13,6 +13,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+func tw () {
+  mkdir -p ~/tw1/
+  cd ~/tw1/
+  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata "$1"
+}
+
 func tt () {
   mkdir -p ~/tt1/
   cd ~/tt1/
