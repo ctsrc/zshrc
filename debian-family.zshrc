@@ -41,7 +41,7 @@ func yt () {
   mkdir -p ~/youtube8/
   cd ~/youtube8/
   sleep_requests="$( shuf -i 3-9 -n 1 )"
-  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata --write-sub --write-auto-sub --sub-lang 'en.*' --extractor-args "youtube:skip=translated_subs" --retry-sleep linear=3::7 --retry-sleep fragment:exp=3:90 --sleep-requests "$sleep_requests" --min-sleep-interval 3 --max-sleep-interval 10 "$1"
+  tsp "$HOME/.pyenv/shims/yt-dlp" -R 2 --add-metadata --write-sub --write-auto-sub --sub-lang 'en.*' --extractor-args "youtube:skip=translated_subs" --retry-sleep linear=3::7 --retry-sleep fragment:exp=3:90 --sleep-requests "$sleep_requests" --min-sleep-interval 3 --max-sleep-interval 10 -r 3M "$1"
 }
 
 func ghu () {
