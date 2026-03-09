@@ -13,6 +13,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+alias yu="pip install -U --pre 'yt-dlp[default,curl-cffi]'"
+
 func sc () {
   mkdir -p ~/sc1/
   cd ~/sc1/
