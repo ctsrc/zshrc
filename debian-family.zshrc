@@ -171,3 +171,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init -)"
 . "/home/erikn/.deno/env"
+
+# golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
