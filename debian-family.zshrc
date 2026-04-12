@@ -6,9 +6,9 @@ setopt HIST_IGNORE_SPACE
 setopt beep nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -111,67 +111,69 @@ export GIT_AUTHOR_EMAIL="erik@nordstroem.no"
 
 # Begin atuin section
 #
-autoload -U add-zsh-hook
+if which atuin >/dev/null ; then
+    autoload -U add-zsh-hook
 
-export ATUIN_SESSION=$(atuin uuid)
-export ATUIN_HISTORY="atuin history list"
+    export ATUIN_SESSION=$(atuin uuid)
+    export ATUIN_HISTORY="atuin history list"
 
-_atuin_preexec() {
-    local id
-    id=$(atuin history start -- "$1")
-    export ATUIN_HISTORY_ID="$id"
-}
+    _atuin_preexec() {
+        local id
+        id=$(atuin history start -- "$1")
+        export ATUIN_HISTORY_ID="$id"
+    }
 
-_atuin_precmd() {
-    local EXIT="$?"
+    _atuin_precmd() {
+        local EXIT="$?"
 
-    [[ -z "${ATUIN_HISTORY_ID}" ]] && return
+        [[ -z "${ATUIN_HISTORY_ID}" ]] && return
 
-    (RUST_LOG=error atuin history end --exit $EXIT -- $ATUIN_HISTORY_ID &) >/dev/null 2>&1
-}
+        (RUST_LOG=error atuin history end --exit $EXIT -- $ATUIN_HISTORY_ID &) >/dev/null 2>&1
+    }
 
-_atuin_search() {
-    emulate -L zsh
-    zle -I
+    _atuin_search() {
+        emulate -L zsh
+        zle -I
 
-    # Switch to cursor mode, then back to application
-    echoti rmkx
-    # swap stderr and stdout, so that the tui stuff works
-    # TODO: not this
-    # shellcheck disable=SC2048
-    output=$(RUST_LOG=error atuin search $* -i -- $BUFFER 3>&1 1>&2 2>&3)
-    echoti smkx
+        # Switch to cursor mode, then back to application
+        echoti rmkx
+        # swap stderr and stdout, so that the tui stuff works
+        # TODO: not this
+        # shellcheck disable=SC2048
+        output=$(RUST_LOG=error atuin search $* -i -- $BUFFER 3>&1 1>&2 2>&3)
+        echoti smkx
 
-    if [[ -n $output ]]; then
-        RBUFFER=""
-        LBUFFER=$output
-    fi
+        if [[ -n $output ]]; then
+    	RBUFFER=""
+    	LBUFFER=$output
+        fi
 
-    zle reset-prompt
-}
+        zle reset-prompt
+    }
 
-_atuin_up_search() {
-    _atuin_search --shell-up-key-binding
-}
+    _atuin_up_search() {
+        _atuin_search --shell-up-key-binding
+    }
 
-add-zsh-hook preexec _atuin_preexec
-add-zsh-hook precmd _atuin_precmd
+    add-zsh-hook preexec _atuin_preexec
+    add-zsh-hook precmd _atuin_precmd
 
-zle -N _atuin_search_widget _atuin_search
-zle -N _atuin_up_search_widget _atuin_up_search
+    zle -N _atuin_search_widget _atuin_search
+    zle -N _atuin_up_search_widget _atuin_up_search
 
-bindkey '^r' _atuin_search_widget
-bindkey '^[[A' _atuin_up_search_widget
-bindkey '^[OA' _atuin_up_search_widget
+    bindkey '^r' _atuin_search_widget
+    bindkey '^[[A' _atuin_up_search_widget
+    bindkey '^[OA' _atuin_up_search_widget
+fi
 #
 # End atuin section
 
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-eval "$(pyenv virtualenv-init -)"
-. "/home/erikn/.deno/env"
+if which pyenv >/dev/null ; then
+  eval "$(pyenv init - zsh)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
-# golang
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+test -f "$HOME/.deno/env" && . "$HOME/.deno/env"
