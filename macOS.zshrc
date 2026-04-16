@@ -68,13 +68,13 @@ preexec() {
 precmd() {
   echo -e "\033[47m\033[30m$(date)\033[0m"
 }
+ps1_host_symbol='(?)'
 hname="$( hostname -s )"
-export POSTEDIT=$'\e[0m\e[K'
 if [ "$hname" = "nova" ] ; then
-  export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f 🌟 %F{cyan}%~%f "$'\n'"%K{60}%# "
-else
-  export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f (?) %F{cyan}%~%f "$'\n'"%K{60}%# "
+  ps1_host_symbol='🌟'
 fi
+export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f ${ps1_host_symbol} %F{cyan}%~%f "$'\n'"%K{60}%# "
+export POSTEDIT=$'\e[0m\e[K'
 
 # We use a host-specific committer name,
 # paired with our author name.
