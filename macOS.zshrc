@@ -65,10 +65,10 @@ func gh () {
 }
 
 preexec() {
-  printf "\033[47m\033[30m%s\n\033[0m" "$(strftime '%a %b %d %T %Z %Y')"
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
 }
 precmd() {
-  printf "\033[47m\033[30m%s\n\033[0m" "$(strftime '%a %b %d %T %Z %Y')"
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
 }
 ps1_host_symbol='(?)'
 hname="$( hostname -s )"
