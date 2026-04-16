@@ -13,6 +13,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+zmodload zsh/datetime
+
 func yts () {
   cd ~/yt-shorts/
   TS_MAXFINISHED=10000 /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
@@ -124,22 +126,29 @@ alias tsp="ts"
 
 alias t="tmux a || tmux"
 
-hname="$(hostname -f)"
-if [ "$hname" = "blacksmith" ] ; then
-  export PS1=$'\n'"%n@%m ⚒️  %~ "$'\n'"%# "
-elif [ "$hname" = "fenris" ] ; then
-  export PS1=$'\n'"%n@%m 🐺 %~ "$'\n'"%# "
+preexec() {
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
+}
+precmd() {
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
+}
+ps1_host_symbol='(?)'
+hname="$( hostname -s )"
+if [ "$hname" = "de1" ] ; then
+  ps1_host_symbol='🇩🇪 '
 elif [ "$hname" = "de2" ] ; then
-  export PS1=$'\n'"%n@%m 🍻 %~ "$'\n'"%# "
-elif [ "$hname" = "de1" ] ; then
-  export PS1=$'\n'"%n@%m 🇩🇪  %~ "$'\n'"%# "
-elif [ "$hname" = "lynyrd" ] ; then
-  export PS1=$'\n'"%n@%m ⚡ %~ "$'\n'"%# "
+  ps1_host_symbol='🍻'
 elif [ "$hname" = "login.nstr.no" ] ; then
-  export PS1=$'\n'"%n@%m ⛩️  %~ "$'\n'"%# "
-else
-  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
+  ps1_host_symbol='⛩️'
+elif [ "$hname" = "blacksmith" ] ; then
+  ps1_host_symbol='⚒️'
+elif [ "$hname" = "lynyrd" ] ; then
+  ps1_host_symbol='⚡'
+elif [ "$hname" = "fenris" ] ; then
+  ps1_host_symbol='🐺'
 fi
+export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f ${ps1_host_symbol} %F{cyan}%~%f "$'\n'"%K{60}%# "
+export POSTEDIT=$'\e[0m\e[K'
 
 # Begin atuin section
 #
