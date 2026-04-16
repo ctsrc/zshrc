@@ -12,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+zmodload zsh/datetime
+
 ## >>> conda initialize >>>
 ## !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -63,10 +65,10 @@ func gh () {
 }
 
 preexec() {
-  echo -e "\033[47m\033[30m$(date)\033[0m"
+  printf "\033[47m\033[30m%s\n\033[0m" "$(strftime '%a %b %d %T %Z %Y')"
 }
 precmd() {
-  echo -e "\033[47m\033[30m$(date)\033[0m"
+  printf "\033[47m\033[30m%s\n\033[0m" "$(strftime '%a %b %d %T %Z %Y')"
 }
 ps1_host_symbol='(?)'
 hname="$( hostname -s )"
