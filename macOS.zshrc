@@ -62,11 +62,18 @@ func gh () {
   echo "Wrong machine, mate." 1>&2
 }
 
+preexec() {
+  echo -e "\033[47m\033[30m$(date)\033[0m"
+}
+precmd() {
+  echo -e "\033[47m\033[30m$(date)\033[0m"
+}
 hname="$( hostname -s )"
+export POSTEDIT=$'\e[0m\e[K'
 if [ "$hname" = "nova" ] ; then
-  export PS1=$'\n'"%n@%m 🌟 %~ "$'\n'"%# "
+  export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f 🌟 %F{cyan}%~%f "$'\n'"%K{60}%# "
 else
-  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
+  export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f (?) %F{cyan}%~%f "$'\n'"%K{60}%# "
 fi
 
 # We use a host-specific committer name,
