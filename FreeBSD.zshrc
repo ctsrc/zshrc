@@ -122,7 +122,7 @@ alias sl="screen -list"
 
 alias vim="nvim"
 
-alias tsp="ts"
+alias tsp="/usr/local/bin/ts"
 
 alias t="tmux a || tmux"
 
