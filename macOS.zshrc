@@ -56,6 +56,20 @@ export PATH="$HOME/bin:$PATH"
 # End of PATH
 #
 
+# Fallback for repotools, if repotools is not installed.
+# <https://github.com/ctsrc/repotools>
+which pu >/dev/null 2>&1
+if [ $? -ne 0 ] ; then
+  alias pu="git push"
+  alias aa="git add -A --"
+  alias cm="git commit -m"
+  alias di="git diff --cached --"
+  alias dp="git diff --"
+  alias le="git shortlog -se"
+  alias pu="git push"
+  alias st="git status --"
+fi
+
 func ghu () {
   echo "Wrong machine, mate." 1>&2
 }
