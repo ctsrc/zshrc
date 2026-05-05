@@ -15,6 +15,21 @@ compinit
 
 zmodload zsh/datetime
 
+# Fallback for repotools, if repotools is not installed.
+# <https://github.com/ctsrc/repotools>
+which pu >/dev/null 2>&1
+if [ $? -ne 0 ] ; then
+  alias pu="git push"
+  alias aa="git add -A --"
+  alias cm="git commit -m"
+  alias di="git diff --cached --"
+  alias dp="git diff --"
+  alias le="git shortlog -se"
+  alias pu="git push"
+  alias st="git status --"
+fi
+
+
 func yts () {
   cd ~/yt-shorts/
   TS_MAXFINISHED=10000 /usr/local/bin/ts yt-dlp --write-subs --add-metadata "$1"
