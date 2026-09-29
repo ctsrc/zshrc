@@ -13,6 +13,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+zmodload zsh/datetime
+
 alias yu="pip install -U --pre 'yt-dlp[default,curl-cffi]'"
 
 func sc () {
@@ -78,22 +80,29 @@ alias sl="screen -list"
 
 alias vim="nvim"
 
-hname="$(hostname -s)"
+preexec() {
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
+}
+precmd() {
+  printf "\033[47m\033[30m%s\033[0m\n" "$(strftime '%a %b %d %T %Z %Y')"
+}
+ps1_host_symbol='(?)'
+hname="$( hostname -s )"
 if [ "$hname" = "displaydude" ] ; then
-  export PS1=$'\n'"%n@%m 🖥  %~ "$'\n'"%# "
+  ps1_host_symbol='🖥'
 elif [ "$hname" = "blixen" ] ; then
-  export PS1=$'\n'"%n@%m 🐎 %~ "$'\n'"%# "
+  ps1_host_symbol='🐎'
 elif [ "$hname" = "rough" ] ; then
-  export PS1=$'\n'"%n@%m 🥺 %~ "$'\n'"%# "
+  ps1_host_symbol='🥺'
 elif [ "$hname" = "hoover" ] ; then
-  export PS1=$'\n'"%n@%m 🧹 %~ "$'\n'"%# "
+  ps1_host_symbol='🧹'
 elif [ "$hname" = "cascade-delight" ] ; then
-  export PS1=$'\n'"%n@%m 💦 %~ "$'\n'"%# "
+  ps1_host_symbol='💦'
 elif [ "$hname" = "minitower" ] ; then
-  export PS1=$'\n'"%n@%m 🗼 %~ "$'\n'"%# "
-else
-  export PS1=$'\n'"%n@%m (?) %~ "$'\n'"%# "
+  ps1_host_symbol='🗼'
 fi
+export PS1=$'\n'"%F{green}%n@%f%F{blue}%m%f ${ps1_host_symbol} %F{cyan}%~%f "$'\n'"%K{60}%# "
+export POSTEDIT=$'\e[0m\e[K'
 
 # We use a host-specific committer name,
 # paired with our author name.
